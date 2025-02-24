@@ -1,0 +1,35 @@
+spring:
+  datasource:
+    url: jdbc:mysql://localhost:3306/video
+      ?useSSL=false
+      &serverTimezone=UTC
+    username: root
+    password: 1234
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  jpa:
+
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+
+  data:
+    mongodb:
+      # root ???? ??, video DB? ??
+      # authSource=admin ? root ?? ??? ?? DB
+      uri: mongodb://local:local@docker-mongo:27017/video?authSource=admin
+    redis:
+      host: docker-redis
+      port: 6379
+
+logging:
+  level:
+    org.hibernate.orm.jdbc.bind: TRACE
+
+server:
+  port: 8080    # ?? ?????? ??. Nginx? 80? ??? ???? ? ??? ????
+
+springdoc:
+  api-docs:
+    path: /v3/api-docs
+  swagger-ui:
+    path: /swagger-ui.html
